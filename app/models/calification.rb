@@ -1,0 +1,2 @@
+class Calification < ApplicationRecord
+end
