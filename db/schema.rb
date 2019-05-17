@@ -10,22 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_16_054739) do
+ActiveRecord::Schema.define(version: 2019_05_17_172553) do
 
   create_table "administrators", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "califications", force: :cascade do |t|
-    t.integer "calification"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "event_id"
-    t.index ["event_id"], name: "index_califications_on_event_id"
-    t.index ["user_id"], name: "index_califications_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -40,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_05_16_054739) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "event_id"
+    t.datetime "date_of_comment"
     t.index ["event_id"], name: "index_comments_on_event_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -51,14 +42,6 @@ ActiveRecord::Schema.define(version: 2019_05_16_054739) do
     t.integer "category_id"
     t.index ["category_id"], name: "index_event_categories_on_category_id"
     t.index ["event_id"], name: "index_event_categories_on_event_id"
-  end
-
-  create_table "event_images", force: :cascade do |t|
-    t.string "route"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "event_id"
-    t.index ["event_id"], name: "index_event_images_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -78,16 +61,29 @@ ActiveRecord::Schema.define(version: 2019_05_16_054739) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string "path"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "imageable_type"
+    t.integer "imageable_id"
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
+  end
+
   create_table "interests", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "profile_images", force: :cascade do |t|
-    t.string "route"
+  create_table "scores", force: :cascade do |t|
+    t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "event_id"
+    t.index ["event_id"], name: "index_scores_on_event_id"
+    t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
   create_table "user_events", force: :cascade do |t|
@@ -120,8 +116,6 @@ ActiveRecord::Schema.define(version: 2019_05_16_054739) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "profile_image_id"
-    t.index ["profile_image_id"], name: "index_users_on_profile_image_id"
   end
 
 end
