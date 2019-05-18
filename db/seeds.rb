@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #Faker
-
+i = 1;
 100.times do
     User.create(
         name: Faker::Name.first_name,
@@ -20,15 +20,11 @@
         notifications: Faker::Boolean.boolean,
         email: Faker::Internet.email,
     )
-        
+
     Category.create(
         name: Faker::Book.genre,
     )
-    
-    Comment.create(
-        comment: Faker::String.random,
-    )
-    
+
     Event.create(
         borough: Faker::Address.state,
         date_of_event: Faker::Date.forward(23),
@@ -40,20 +36,31 @@
         latitude: Faker::Number.number(10),
         longitude: Faker::Number.number(10),
         address: Faker::Address.full_address,
+        user_id: i
     )
-    
+
+
+    Comment.create(
+        comment: Faker::String.random,
+        user_id: i,
+        event_id: i
+    )
+
     Image.create(
-        path: Faker::Placeholdit.image,    
+        path: Faker::Placeholdit.image,
     )
-    
+
     Interest.create(
-        name: Faker::Types.rb_string,    
+        name: Faker::Types.rb_string
     )
-    
+
     Score.create(
-        score: Faker::Number.between(1, 5)
+        score: Faker::Number.between(1, 5),
+        user_id: i,
+        event_id: i
     )
-    
+
+i = i+ 1;
 end
 
 6.times do
