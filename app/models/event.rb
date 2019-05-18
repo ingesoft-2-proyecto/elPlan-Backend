@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
 
+  #validaciones
   validates(:borough, presence: true, length: {maximum:45})
   validates(:name, presence: true, length: {maximum:100})
   validates(:description, presence: true, length: {maximum:2000})
@@ -7,7 +8,7 @@ class Event < ApplicationRecord
   validates(:type_of_public, presence: true, length: {maximum:20})
   validates(:address, presence: true, length: {maximum:30})
 
-
+  #asocioaciones
   belongs_to :user
 
   has_many :scores

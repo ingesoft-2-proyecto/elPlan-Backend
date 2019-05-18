@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 
+  #validacion
   validates(:name, presence: true, length: {maximum:30})
   validates(:surname, presence: true, length: {maximum:30})
   validates(:password, presence: true, length: {maximum:45})

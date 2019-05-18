@@ -1,3 +1,5 @@
 class Administrator < ApplicationRecord
-  validates(:name, presence: true, length: {maximum:30})
+    
+    #validaciones
+    validates(:name, presence: true, length: {maximum:30})
 end
