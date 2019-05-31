@@ -3,8 +3,8 @@ class AdministratorsController < ApplicationController
 
   # GET /administrators
   def index
-    @administrators = Administrator.all
-
+    #@administrators = Administrator.all
+    @administrators = Administrator.paginate(:page => params[:page], per_page: 10)
     render json: @administrators
   end
 

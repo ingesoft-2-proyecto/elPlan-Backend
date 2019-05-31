@@ -3,8 +3,8 @@ class InterestsController < ApplicationController
 
   # GET /interests
   def index
-    @interests = Interest.all
-
+    #@interests = Interest.all
+    @interests = Interest.paginate(:page => params[:page], per_page: 10)
     render json: @interests
   end
 

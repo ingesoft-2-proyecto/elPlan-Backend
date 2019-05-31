@@ -3,8 +3,8 @@ class ScoresController < ApplicationController
 
   # GET /scores
   def index
-    @scores = Score.all
-
+    #@scores = Score.all
+    @scores = Score.paginate(:page => params[:page], per_page: 10)
     render json: @scores
   end
 
