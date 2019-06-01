@@ -33,6 +33,8 @@ gem 'faker', '~> 1.9', '>= 1.9.3'
 gem 'annotate'
 ## Gemfile for Rails 3+, Sinatra, and Merb
 gem 'will_paginate', '~> 3.1.0'
+# Active model serializer
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
