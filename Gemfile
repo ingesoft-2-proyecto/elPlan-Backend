@@ -34,15 +34,15 @@ gem 'annotate'
 gem 'will_paginate', '~> 3.1.0'
 # Active model serializer
 gem 'active_model_serializers', '~> 0.10.0'
-<<<<<<< HEAD
-gem 'bcrypt', '~> 3.1.7'
-gem 'rack-cors'
-gem 'knock'
+#<<<<<<< HEAD
 gem 'jwt'
-=======
+gem 'bcrypt', '~> 3.1.7'
+gem 'knock'
+
+#=======
 #gema rack-cors
 gem 'rack-cors'
->>>>>>> c19546ad7c11f8433ea1252ff9af5d26bda86d16
+#>>>>>>> c19546ad7c11f8433ea1252ff9af5d26bda86d16
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

@@ -1,25 +1,20 @@
 class UsersController < ApplicationController
+
   before_action :authorize_request, except: :create
   before_action :find_user, except: %i[create index]
-  before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
   def index
     #@users = User.all
     @users = User.paginate(:page => params[:page], per_page: 10)
-    render json: @users
-    
+    render json: @users, status: :ok
+
   end
-  
-  def find_user
-    @user = User.find_by_username!(params[:_username])
-    rescue ActiveRecord::RecordNotFound
-      render json: { errors: 'User not found' }, status: :not_found
-  end 
-  
+
+
   # GET /users/1
   def show
-    render json: @user
+    render json: @user, status: :ok
   end
 
   # POST /users
@@ -48,13 +43,15 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
+
+    def find_user
       @user = User.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        render json: { errors: 'User not found' }, status: :not_found
     end
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:avatar, :name, :surname, :born_date, :age, :password_digest, :latitude, :longitude, :notifications, :email, :password_confirmation)
+      params.permit(:avatar, :name, :surname, :born_date, :age, :password, :latitude, :longitude, :notifications, :email, :password_confirmation)
     end
 end
