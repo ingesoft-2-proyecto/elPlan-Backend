@@ -14,7 +14,7 @@ i = 1;
         surname: Faker::Name.last_name,
         born_date: Faker::Date.birthday(18, 65),
         age: Faker::Number.between(1, 10),
-        password: Faker::Types.rb_string,
+        password_digest: Faker::Types.rb_string,
         latitude: Faker::Number.number(10),
         longitude: Faker::Number.number(10),
         notifications: Faker::Boolean.boolean,
