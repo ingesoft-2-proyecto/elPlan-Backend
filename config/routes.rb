@@ -4,10 +4,11 @@ Rails.application.routes.draw do
 
   resources :scores
   resources :events
-  resources :users 
+  resources :users
   resources :administrators
   resources :categories
   resources :comments
   resources :images
   resources :interests
+  resources :searchage
 end

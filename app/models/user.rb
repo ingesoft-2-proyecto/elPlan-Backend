@@ -41,4 +41,6 @@ class User < ApplicationRecord
 
  #Asociacion polimorfica
  has_many :images, as: :imageable
+
+ scope :search_age,->(params){where(age: params)}
 end
