@@ -17,12 +17,16 @@
 #
 
 class User < ApplicationRecord
+ 
+ has_secure_password #permite autenticacion basada en token de forma segura
+ 
+ #mount_uploader :avatar, AvatarUploader
 
  #validacion
  validates(:name, presence: true, length: {maximum:30})
  validates(:surname, presence: true, length: {maximum:30})
- validates(:password, presence: true, length: {maximum:45})
- validates(:email, presence: true, length: {maximum:45})
+ validates(:password_digest, presence: true, length: {maximum:45, minimum: 5})
+ validates(:email, presence: true, length: {maximum:45}, uniqueness: true, format: {with: URI::MailTo::EMAIL_REGEXP})
  validates(:age, presence: true, numericality: {only_integer: true})
 
  has_many :scores

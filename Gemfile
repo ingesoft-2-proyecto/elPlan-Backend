@@ -35,6 +35,10 @@ gem 'annotate'
 gem 'will_paginate', '~> 3.1.0'
 # Active model serializer
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'bcrypt', '~> 3.1.7'
+gem 'rack-cors'
+gem 'knock'
+gem 'jwt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
