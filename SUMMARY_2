@@ -1,0 +1,14 @@
+# Features
+
+  -Uso de la gema annotate (Diego Tovar, Cristian Tafur)
+  -Uso de la gema will_paginate (Cristian Tafur, Diego Tovar)
+  -Creacion de queries y serializadores basicos de user y events (Juan Pablo Giron)
+  -Autenticacion usando JWT de los usuarios (Diego Tovar, Juan Pablo Giron)
+  -Configuracion de endpoints de modelos user para crear, event para listar, search age, update informacion usuario y crear evento (Juan Pablo Giron)
+  -Configuracion de CORS para comunicacion con Front-end (Cristian Tafur)
+  -Desplegar backend en heroku (Juan Pablo Giron)
+
+# Next Features
+
+  - Mejorar comunicacion y hacer pruebas con el front-end
+  - Sugerencias o requisitos puestos en clase

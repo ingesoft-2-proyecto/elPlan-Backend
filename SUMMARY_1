@@ -1,0 +1,12 @@
+# Features
+
+  -Creacion de tablas, segun el modelo hecho por todos (Juan Pablo Giron)
+  -Validaciones a tablas (Diego Tovar)
+  -Uso de gema faker para poblar tablas (Cristian Tafur)
+  -Añadir rutas a los controladores (Cristian Tafur, Diego Tovar, Juan Pablo Giron)
+  
+
+# Next Features
+
+  - Preparar autenticaciones 
+  - Enviar datos del modelo en catidades correctas y adecuadamente
