@@ -9,12 +9,14 @@
 #Faker
 i = 1;
 100.times do
+
     User.create(
         name: Faker::Name.first_name,
         surname: Faker::Name.last_name,
         born_date: Faker::Date.birthday(18, 65),
         age: Faker::Number.between(1, 10),
-        password_digest: Faker::Types.rb_string,
+        password: :backend123,
+        password_confirmation: :backend123,
         latitude: Faker::Number.number(10),
         longitude: Faker::Number.number(10),
         notifications: Faker::Boolean.boolean,
