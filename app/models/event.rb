@@ -1,12 +1,32 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id             :integer          not null, primary key
+#  borough        :string
+#  date_of_event  :datetime
+#  name           :string
+#  description    :text
+#  cost           :float
+#  type_of_public :string
+#  over           :boolean
+#  latitude       :float
+#  longitude      :float
+#  address        :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  user_id        :integer
+#
+
 class Event < ApplicationRecord
 
   #validaciones
-  validates(:borough, presence: true, length: {maximum:45})
-  validates(:name, presence: true, length: {maximum:100})
-  validates(:description, presence: true, length: {maximum:2000})
+  validates(:borough, presence: true, length: {maximum:200})
+  validates(:name, presence: true, length: {maximum:200})
+  validates(:description, presence: true, length: {maximum:5000})
   validates(:cost, presence: true, numericality: {greater_than_or_equal_to: 0})
-  validates(:type_of_public, presence: true, length: {maximum:20})
-  validates(:address, presence: true, length: {maximum:30})
+  validates(:type_of_public, presence: true, length: {maximum:200})
+  validates(:address, presence: true, length: {maximum:200})
 
   #asocioaciones
   belongs_to :user
