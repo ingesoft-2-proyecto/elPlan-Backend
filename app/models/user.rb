@@ -46,6 +46,7 @@ if: -> { new_record? || !password.nil? }
 
  has_many :events
 
+ has_one_attached :photo
  #Asociacion polimorfica
  has_many :images, as: :imageable
 
