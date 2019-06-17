@@ -14,12 +14,27 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     @comment = Comment.create(comment: params[:comment],user_id: params[:user_id],event_id: params[:event_id])
-
-    if @comment.save
-      render json: @comment, status: :created, location: @comment
-    else
-      render json: @comment.errors, status: :unprocessable_entity
+    @user = User.find(params[:user_id])
+    respond_to do |format|
+      if @comment.save
+        # Tell the UserMailer to send a welcome email after save
+        CommentMailer.new_comment(@user,@comment).deliver_later
+        #render json: @user, status: :created, location: @user
+        #format.html { redirect_to(@user, notice: 'Usuario creado.') }
+        format.json { render json: @comment, status: :created, location: @comment }
+      else
+        #format.html { render action: 'new' }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        #render json: @user.errors, status: :unprocessable_entity
+      end
     end
+
+
+    #if @comment.save
+    #  render json: @comment, status: :created, location: @comment
+    #else
+    #  render json: @comment.errors, status: :unprocessable_entity
+    #end
   end
   
   # PATCH/PUT /comments/1

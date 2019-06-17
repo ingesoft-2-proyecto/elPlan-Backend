@@ -26,7 +26,7 @@ class User < ApplicationRecord
  validates(:name, presence: true, length: {maximum:30})
  validates(:surname, presence: true, length: {maximum:30})
 # validates(:password_digest, presence: true, length: {maximum:45, minimum: 5})
- validates(:email, presence: true, length: {maximum:45}, uniqueness: true, format: {with: URI::MailTo::EMAIL_REGEXP})
+ validates(:email, presence: true, length: {maximum:45}, format: {with: URI::MailTo::EMAIL_REGEXP})#falta esto pero se quito para pruebas de email , uniqueness: true
  validates(:age, presence: true, numericality: {only_integer: true})
  validates :password,
            length: { minimum: 6 },

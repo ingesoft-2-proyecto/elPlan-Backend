@@ -15,12 +15,27 @@ class EventsController < ApplicationController
   # POST /events
   def create
     @event = Event.new(event_params)
-
-    if @event.save
-      render json: @event, status: :created, location: @event
-    else
-      render json: @event.errors, status: :unprocessable_entity
+    @user = User.find(params[:user_id])
+    respond_to do |format|
+      if @event.save
+        # Tell the UserMailer to send a welcome email after save
+        EventMailer.new_event(@user,@event).deliver_later
+        #render json: @user, status: :created, location: @user
+        #format.html { redirect_to(@user, notice: 'Usuario creado.') }
+        format.json { render json: @event, status: :created, location: @event }
+      else
+        #format.html { render action: 'new' }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+        #render json: @user.errors, status: :unprocessable_entity
+      end
     end
+
+
+    #if @event.save
+    #  render json: @event, status: :created, location: @event
+    #else
+    #  render json: @event.errors, status: :unprocessable_entity
+    #end
   end
 
   # PATCH/PUT /events/1
@@ -45,6 +60,6 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:borough, :name, :description, :cost, :user_id)
+      params.require(:event).permit(:borough, :date_of_event, :name, :description, :cost, :type_of_public, :over, :latitude, :longitude, :address, :user_id )
     end
 end
