@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authorize_request, except: :create
+  before_action :authorize_request, except: [:create, :show, :index]
   before_action :find_user, except: %i[create index]
 
   # GET /users
@@ -9,13 +9,17 @@ class UsersController < ApplicationController
     @users = User.paginate(:page => params[:page], per_page: 10)
     render json: @users, status: :ok
 
+    #@users = User.all.with_attached_photo
+
+    #render json: @users.to_json(include: { photo_attachment: { include: :blob } })
   end
 
 
   # GET /users/1
   def show
     render json: @user, status: :ok
-  end
+    #render json: @user.to_json(include: { photo: url_for(@user.photo)  }), status: :ok
+end
 
   # POST /users
   def create
@@ -68,6 +72,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.permit(:avatar, :name, :surname, :born_date, :age, :password, :latitude, :longitude, :notifications, :email, :password_confirmation)
+      params.permit(:photo, :name, :surname, :born_date, :age, :password, :latitude, :longitude, :notifications, :email, :password_confirmation)
     end
 end

@@ -10,7 +10,29 @@ class EventsController < ApplicationController
   # GET /events/1
   def show
     render json: @event
+    #@event = scope.find(params[:id])
   end
+  
+  def generate_pdf
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render  pdf: sanitize_filename("pdf_evento"),
+             template: 'layouts/generate_pdf.pdf.erb',
+             page_size: 'Letter',
+             zoom: 1,
+             background: true,
+             margin: {
+               top: 0,
+               bottom:0,
+               left:0,
+               right:0 
+             }
+        end
+      end
+  end
+  #<%= link_to "Generar PDF", generate_pdf_path(format: :pdf) %>
+  #link en la vista para que el usuario descargue el pdf
 
   # POST /events
   def create

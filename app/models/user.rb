@@ -46,8 +46,15 @@ if: -> { new_record? || !password.nil? }
 
  has_many :events
 
+ has_one_attached :photo
  #Asociacion polimorfica
  has_many :images, as: :imageable
 
  scope :search_age,->(params){where(age: params)}
+
+ def avatar_on_disk
+    ActiveStorage::Blob.service.send(:path_for, photo.blob.key)
+    #active_storage_disk_service = ActiveStorage::Service::DiskService.new(root: Rails.root.to_s + '/storage/')
+    #active_storage_disk_service.send(:path_for, photo.blob.key)
+  end
 end
