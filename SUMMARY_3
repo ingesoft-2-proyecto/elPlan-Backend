@@ -1,0 +1,10 @@
+# Features
+
+  -Implementación de mailers (Diego Tovar)
+  -Generación de PDFS(Cristian Tafur)
+  -Creacion de usuario con dubida de imágenes (Juan Pablo Giron)
+  -Endpoints para creación de flujos (Diego Tovar, Juan Pablo Giron, Cristian Tafur)
+# Next Features
+
+  - Mejorar comunicacion y hacer pruebas con el front-end
+  - Mejorar integración 
