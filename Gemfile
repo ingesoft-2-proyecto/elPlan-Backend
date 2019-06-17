@@ -44,6 +44,10 @@ gem 'knock'
 gem 'rack-cors'
 #>>>>>>> c19546ad7c11f8433ea1252ff9af5d26bda86d16
 
+#Gemas para generar pdf's
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
