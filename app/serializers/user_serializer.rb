@@ -5,9 +5,16 @@ class UserSerializer < ActiveModel::Serializer
   has_many :events
 
   def my_path
+  #  begin
+
     ActiveStorage::Blob.service.send(:path_for, object.photo.key)
     #active_storage_disk_service = ActiveStorage::Service::DiskService.new(root: Rails.root.to_s + '/storage/')
     #active_storage_disk_service.send(:path_for, object.photo.blob.key)
+
+      # potentially exception raising code
+      #rescue Exception1 => e
+    #    object.photo_attachment.blob
+    #end
   end
 
   def my_blob
