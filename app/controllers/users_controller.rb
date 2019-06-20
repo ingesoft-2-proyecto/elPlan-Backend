@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :authorize_request, except: [:create, :show, :index]
-  #before_action :find_user, except: %i[create index]
+  before_action :find_user, except: %i[create index]
 
   # GET /users
   def index
@@ -17,8 +17,8 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    @user = User.find(params[:id])
-    #render json: @user, status: :ok
+    #@user = User.find(params[:id])
+    render json: @user, status: :ok
     #render json: @user.to_json(include: { photo: url_for(@user.photo)  }), status: :ok
 end
 
