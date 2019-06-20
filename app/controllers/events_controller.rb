@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  before_action :set_event, only: [:show, :update, :destroy]
+
     # GET /events
   def index
     #@events = Event.all
@@ -9,10 +11,10 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
-    render json: @event
+    render json: @event, status: :ok
     #@event = scope.find(params[:id])
   end
-  
+
   def generate_pdf
     respond_to do |format|
       format.html
@@ -26,7 +28,7 @@ class EventsController < ApplicationController
                top: 0,
                bottom:0,
                left:0,
-               right:0 
+               right:0
              }
         end
       end
@@ -73,11 +75,13 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+            render json: { errors: 'Event not found' }, status: :not_found
     end
 
     # Only allow a trusted parameter "white list" through.
