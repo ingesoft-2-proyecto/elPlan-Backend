@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :images
   resources :interests
   resources :searchage
+  resources :user_image
 end

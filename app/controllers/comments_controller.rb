@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :set_comment, only: [:show, :update, :destroy]
+
   def index
     #@comments = Comment.all
     @comments = Comment.paginate(:page => params[:page], per_page: 10)
@@ -55,6 +57,8 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        render json: { errors: 'Comment not found' }, status: :not_found
     end
 
     # Only allow a trusted parameter "white list" through.
