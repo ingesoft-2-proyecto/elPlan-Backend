@@ -49,10 +49,10 @@ gem 'rack-cors'
 #Gemas para generar pdf's
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-gem 'pg'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
-  #gem 'sqlite3'
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -65,7 +65,7 @@ group :development do
 end
 
 group :production do
-  #gem 'pg', '0.20.0'
+  gem 'pg', '0.20.0'
 end
 
 
