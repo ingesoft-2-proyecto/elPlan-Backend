@@ -31,6 +31,7 @@ end
       if @user.save
         # Tell the UserMailer to send a welcome email after save
         UserMailer.welcome_email(@user).deliver_later
+        
         #render json: @user, status: :created, location: @user
         #format.html { redirect_to(@user, notice: 'Usuario creado.') }
         format.json { render json: @user, status: :created, location: @user }
@@ -39,6 +40,8 @@ end
         format.json { render json: @user.errors, status: :unprocessable_entity }
         #render json: @user.errors, status: :unprocessable_entity
       end
+
+
     end
 
 #=end

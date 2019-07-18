@@ -22,4 +22,7 @@ Rails.application.routes.draw do
   resources :interests
   resources :searchage
   resources :user_image
+  resources :event_image
+  resources :statistic_cost
+  resources :statistic_categories
 end

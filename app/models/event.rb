@@ -43,6 +43,13 @@ class Event < ApplicationRecord
   has_many :event_categories
   has_many :categories, through: :event_categories
 
+
+  has_one_attached :photo
+
   #Asociacion polimorfica
   has_many :images, as: :imageable
+
+  scope :search_category,->(params){where(category: params)}
+  scope :search_cost, -> (params){where("cost <= ?", params) }
+
 end

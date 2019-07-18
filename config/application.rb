@@ -32,6 +32,10 @@ module ElPlan
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    #Active Job
+
+    config.active_job.queue_adapter = :delayed_job
+    config.action_mailer.default_url_options = {host:'http://localhost:3000'}
     #Configuración CORS para comunicación con front-end
     config.middleware.insert_before 0, Rack::Cors do
       allow do
