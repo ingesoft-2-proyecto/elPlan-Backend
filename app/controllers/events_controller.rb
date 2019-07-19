@@ -43,7 +43,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         # Tell the UserMailer to send a welcome email after save
-        EventMailer.new_event(@user,@event).deliver_later
+        EventMailer.new_event(@user,@event).deliver_now
         #render json: @user, status: :created, location: @user
         #format.html { redirect_to(@user, notice: 'Usuario creado.') }
         format.json { render json: @event, status: :created, location: @event }

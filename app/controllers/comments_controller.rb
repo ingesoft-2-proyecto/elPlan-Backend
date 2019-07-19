@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         # Tell the UserMailer to send a welcome email after save
-        CommentMailer.new_comment(@user,@comment).deliver_later
+        CommentMailer.new_comment(@user,@comment).deliver_now
         #render json: @user, status: :created, location: @user
         #format.html { redirect_to(@user, notice: 'Usuario creado.') }
         format.json { render json: @comment, status: :created, location: @comment }
