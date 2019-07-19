@@ -7,7 +7,7 @@ class TestJob < ApplicationJob
     #respond_to do |format|
       #if @user.save
         # Tell the UserMailer to send a welcome email after save
-        UserMailer.welcome_email(@user).deliver_later
+        JobMailer.job(@user).deliver_now
         
         #render json: @user, status: :created, location: @user
         #format.html { redirect_to(@user, notice: 'Usuario creado.') }
