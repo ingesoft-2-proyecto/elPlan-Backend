@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+        body {
+        	color:black;
+        	font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+        	font-size: 36px;
+        	font-weight: bold;
+        	color: #A9E2F3;
+        	font-family: Georgia, "Times New Roman",Times, serif;
+        	background-color: black;
+        }
+        
+    </style>
+  </head>
+  <body>
+    <h1>Mensaje de confirmacion creacion evento</h1>
+    <p>
+      Usted ha creado un evento, con el siguiente contenido: <br>
+      Nombre: <%= @event.name %> <br>
+      Localidad: <%= @event.borough %> <br>
+      Direccion: <%= @event.address %> <br>
+      Fecha: <%= @event.date_of_event %> <br>
+      Descripcion: <%= @event.description %> <br>
+      Costo: <%= @event.cost %> <br>
+      Publico: <%= @event.type_of_public %> <br>
+    </p>
+    <p>De nada</p>
+  </body>
+</html>
