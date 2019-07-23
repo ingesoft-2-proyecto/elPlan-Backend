@@ -1,21 +1,22 @@
 class TestJob < ApplicationJob
   queue_as :default
 
-  def perform(user)
-    @user = user
-    puts "job funciona"
-    #respond_to do |format|
-      #if @user.save
-        # Tell the UserMailer to send a welcome email after save
-        JobMailer.job(@user).deliver_now
+  def perform()
+    events = Event.all
+
+    events.each do |individual_event|
+      if(individual_event.date_of_event != nil) 
+        seconds = Time.now - individual_event.date_of_event.to_time 
+        puts seconds
         
-        #render json: @user, status: :created, location: @user
-        #format.html { redirect_to(@user, notice: 'Usuario creado.') }
-      #  format.json { render json: @user, status: :created, location: @user }
-      #else
-        #format.html { render action: 'new' }
-        #format.json { render json: @user.errors, status: :unprocessable_entity }
-        #render json: @user.errors, status: :unprocessable_entity
-    #end
+        @users = individual_event.users
+
+        @users.each do |individual_user|
+          if(seconds <= 86400)
+            JobMailer.job(individual_user).deliver_now
+          end
+        end
+      end
+    end
   end
 end

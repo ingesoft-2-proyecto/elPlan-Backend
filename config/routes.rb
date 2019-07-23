@@ -25,5 +25,7 @@ Rails.application.routes.draw do
   resources :event_image
   resources :statistic_cost
   resources :statistic_categories
+  resources :event_filter
+  resources :search_filter
   resources :pdfsend
 end

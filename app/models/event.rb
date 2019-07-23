@@ -27,6 +27,8 @@ class Event < ApplicationRecord
   validates(:cost, presence: true, numericality: {greater_than_or_equal_to: 0})
   validates(:type_of_public, presence: true, length: {maximum:200})
   validates(:address, presence: true, length: {maximum:200})
+  validates(:category, presence: true, length: {maximum:200}, inclusion: { in: ["Teatro", "Deportes", "Conciertos", "Familia", "Academico"] })
+  
 
   #asocioaciones
   belongs_to :user
@@ -51,5 +53,9 @@ class Event < ApplicationRecord
 
   scope :search_category,->(params){where(category: params)}
   scope :search_cost, -> (params){where("cost <= ?", params) }
+
+  def self.search_events(search)
+      Event.where("name like ?", "%#{search}%")
+  end
 
 end

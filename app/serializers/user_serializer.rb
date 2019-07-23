@@ -1,6 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
 
-  attributes :id, :name, :surname, :age, :email #, :photo_attachment, :my_path, :my_blob, :born_date
+  attributes :id, :name, :surname, :age, :email, :born_date #, :photo_attachment, :my_path, :my_blob, :born_date
 
   has_many :events
 
