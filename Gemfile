@@ -39,7 +39,7 @@ gem 'jwt'
 gem 'bcrypt', '~> 3.1.7'
 gem 'knock'
 
-gem 'httparty', '~> 0.17.0'
+gem 'httparty', '~> 0.21.0'
 
 #=======
 #gema rack-cors
